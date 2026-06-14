@@ -252,6 +252,7 @@ body {
 
 main {
   display: flex;
+  flex-direction: column;
   padding: 3em;
 }
 .scriptures {
@@ -261,6 +262,30 @@ main {
 }
 .scripture-text {
   font-family: var(--font-scripture);
+}
+.about {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+}
+.start-button {
+  border: none;
+  background: var(--accent-interactive);
+  color: white;
+  padding: 0.7em;
+  border-radius: 12px;
+  min-width: 10em;
+  cursor: pointer;
+  transition: all linear 0.1s;
+}
+.start-button:active {
+  opacity: 0.5;
+}
+.loader {
+  text-align: center;
+  color: #12141c;
 }
 
 @media (max-width: 64rem) {
