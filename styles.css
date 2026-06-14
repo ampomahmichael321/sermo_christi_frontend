@@ -1,0 +1,298 @@
+/* ==========================================================================
+   1. CSS VARIABLE ARCHITECTURE & CUSTOM THEMES
+   ========================================================================== */
+:root {
+  /* Design Tokens - System-wide defaults (Light Mode) */
+  --bg-primary: #fcfbfa; /* Soft academic cream/off-white */
+  --bg-secondary: #f4f1ec; /* Light surface contrast */
+  --bg-control: #ffffff; /* Pure white contrast container */
+  --border-color: #e6dfd5; /* Structural framing lines */
+
+  --text-main: #1e2229; /* Deep slate/charcoal for reading */
+  --text-muted: #5e6675; /* Secondary labeling and structural elements */
+  --text-jesus: #a62626; /* Balanced, highly-legible academic crimson */
+  --accent-interactive: #2b59c3; /* Clean study blue for primary focal markers */
+
+  /* Typography Stacks */
+  --font-ui:
+    "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --font-scripture: "Georgia", "Merriweather", serif;
+
+  /* Typography Scaling Matrix */
+  --font-size-title: 1.5rem;
+  --font-size-heading: 1.2rem;
+  --font-size-body: 1.125rem;
+  --font-size-small: 0.875rem;
+  --font-size-meta: 0.75rem;
+
+  /* Spacing Definitions */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2.5rem;
+  --border-radius: 0.375rem;
+  --line-height-scripture: 1.75;
+}
+
+/* Sepia Environment Layer Override */
+[data-theme-context="sepia"] {
+  --bg-primary: #f4ecd8;
+  --bg-secondary: #ebdcb9;
+  --bg-control: #faf4e8;
+  --border-color: #dfceaa;
+  --text-main: #433422;
+  --text-muted: #705c45;
+  --text-jesus: #b31b1b;
+}
+
+/* Dark/Night Study Environment Layer Override */
+[data-theme-context="dark"] {
+  --bg-primary: #12141c;
+  --bg-secondary: #1a1e29;
+  --bg-control: #222735;
+  --border-color: #2e3547;
+  --text-main: #e2e4e9;
+  --text-muted: #9aa2b1;
+  --text-jesus: #ff6b6b;
+  --accent-interactive: #5c8df6;
+}
+
+/* ==========================================================================
+   2. SYSTEM RESETS & FOUNDATION
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Screen Reader Utility Only */
+.visually-hidden {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  margin: -1em;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ==========================================================================
+   3. STRUCTURAL COMPONENT DESIGN
+   ========================================================================== */
+
+/* Main Header Layout */
+.app-header {
+  background-color: var(--bg-control);
+  border-bottom: 0.0625rem solid var(--border-color);
+  padding: var(--spacing-md) 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 87.5rem;
+  margin: 0 auto;
+}
+
+.app-title {
+  font-size: var(--font-size-title);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.accent-text {
+  color: var(--text-jesus);
+  font-weight: 300;
+}
+
+/* Theme Selector Control Structure */
+.theme-toggle-group {
+  display: flex;
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius);
+  border: 0.0625rem solid var(--border-color);
+}
+
+.theme-btn {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-meta);
+  font-weight: 600;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: calc(var(--border-radius) - 0.125rem);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.theme-btn.active,
+.theme-btn:hover {
+  background-color: var(--bg-control);
+  color: var(--text-main);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   4. CONTROL BAR & INTERACTION STATIONS
+   ========================================================================== */
+.control-bar {
+  background-color: var(--bg-secondary);
+  border-bottom: 0.0625rem solid var(--border-color);
+  padding: var(--spacing-md) 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.control-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  width: 90%;
+  max-width: 87.5rem;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.control-group {
+  flex: 1 1 12.5rem;
+}
+
+.control-group.search-group {
+  flex: 2 1 25rem;
+}
+
+/* Input Standardization Elements */
+.ui-input {
+  width: 100%;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-small);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 0.0625rem solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-control);
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.ui-input:focus {
+  border-color: var(--accent-interactive);
+}
+
+/* Custom Selection Dropdown Override */
+.select-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235e6675' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  padding-right: var(--spacing-xl);
+}
+
+/* Academic Segmented Control Tabs */
+.segmented-control {
+  display: flex;
+  background-color: var(--bg-control);
+  border: 0.0625rem solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.segment-label {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.segment-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.segment-button {
+  display: block;
+  font-size: var(--font-size-small);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--text-muted);
+  background-color: var(--bg-control);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.segment-label input[type="radio"]:checked + .segment-button {
+  background-color: var(--text-main);
+  color: var(--bg-primary);
+}
+
+main {
+  display: flex;
+  padding: 3em;
+}
+.scriptures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.7em;
+}
+.scripture-text {
+  font-family: var(--font-scripture);
+}
+
+@media (max-width: 64rem) {
+  :root {
+    --font-size-title: 1.35rem;
+    --font-size-body: 1.0625rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .header-container,
+  .control-container,
+  .workbench-container {
+    width: 95%;
+  }
+
+  /* Linearized control distribution stack */
+  .control-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+
+  .control-group,
+  .control-group.search-group {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  main {
+    padding: 1.5em;
+  }
+  .theme-toggle-group {
+    display: none;
+  }
+}

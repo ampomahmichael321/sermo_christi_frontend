@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Red Letter Academic Workbench</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./app.js" type="module" defer></script>
+  </head>
+  <body>
+    <!-- Application Header -->
+    <header class="app-header">
+      <div class="header-container">
+        <h1 class="app-title">
+          Sermo<span class="accent-text">Christi</span>
+          <span style="font-weight: 400">By Michael Ampomah</span>
+        </h1>
+        <div
+          class="theme-toggle-group"
+          role="group"
+          aria-label="Reading Mode Selector"
+        >
+          <button class="theme-btn active" data-theme="light">Light</button>
+          <button class="theme-btn" data-theme="sepia">Sepia</button>
+          <button class="theme-btn" data-theme="dark">Dark</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sticky Academic Control Bar -->
+    <section class="control-bar" aria-label="Search and Filter Controls">
+      <div class="control-container">
+        <!-- Book Selector Dropdown -->
+        <div class="control-group">
+          <label for="book-select" class="visually-hidden"
+            >Select Gospel Book</label
+          >
+          <select id="book-select" class="ui-input select-input">
+            <option value="all">All four Gospels</option>
+            <option value="matthew">Gospel According to Matthew</option>
+            <option value="mark">Gospel According to Mark</option>
+            <option value="luke">Gospel According to Luke</option>
+            <option value="john">Gospel According to John</option>
+          </select>
+        </div>
+
+        <!-- Scope Filter Tabs -->
+        <div class="control-group">
+          <div
+            class="segmented-control"
+            role="radiogroup"
+            aria-label="Text Scope Filter"
+          >
+            <label class="segment-label">
+              <input type="radio" name="scope-filter" value="all" checked />
+              <span class="segment-button">Comprehensive Text</span>
+            </label>
+            <label class="segment-label">
+              <input type="radio" name="scope-filter" value="parables" />
+              <span class="segment-button">Parables Only</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Keyword / Lemma Search -->
+        <div class="control-group search-group">
+          <label for="keyword-search" class="visually-hidden"
+            >Search Specific Keywords or Lemma Phrases</label
+          >
+          <input
+            type="search"
+            id="keyword-search"
+            class="ui-input search-input"
+            placeholder="Search exact phrases "
+          />
+        </div>
+      </div>
+    </section>
+    <main>
+      <div class="scriptures" id="scriptures-container"></div>
+    </main>
+  </body>
+</html>
