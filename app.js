@@ -2,6 +2,7 @@ const url =
   "https://raw.githubusercontent.com/ampomahmichael321/jesus_words_data/refs/heads/main/jesus_words.json";
 const response = await fetch(url);
 const data = await response.json();
+let version = "KJV";
 let filtered = data;
 const scripturesContainer = document.getElementById("scriptures-container");
 const bookSelector = document.getElementById("book-select");
@@ -16,7 +17,7 @@ function renderData(scripturesJSON) {
     <div class="scripture">
           <h3 class="scripture-heading">${element.book} ${element.verse}</h3>
           <p class="scripture-text">
-            ${element.KJVText}
+            ${element[version + `Text`]}
           </p>
         </div>
     `;
@@ -40,7 +41,7 @@ function filterByBook(bookName) {
 
 function filterByWord(word) {
   filtered = data.filter((entry) =>
-    entry.KJVText.toLowerCase().includes(word.toLowerCase()),
+    entry[version + `Text`].toLowerCase().includes(word.toLowerCase()),
   );
   renderData(filtered);
 }

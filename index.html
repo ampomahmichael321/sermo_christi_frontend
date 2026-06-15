@@ -36,9 +36,6 @@
       <div class="control-container">
         <!-- Book Selector Dropdown -->
         <div class="control-group">
-          <label for="book-select" class="visually-hidden"
-            >Select Gospel Book</label
-          >
           <select id="book-select" class="ui-input select-input">
             <option value="all">All four Gospels</option>
             <option value="matthew">Gospel According to Matthew</option>
@@ -65,7 +62,13 @@
             </label>
           </div>
         </div>
-
+        <div class="control-group">
+          <select id="version-select" class="ui-input select-input">
+            <option value="KJV">KJV</option>
+            <option value="BSB">BSB</option>
+            <option value="ASV">ASV</option>
+          </select>
+        </div>
         <!-- Keyword / Lemma Search -->
         <div class="control-group search-group">
           <input

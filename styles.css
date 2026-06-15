@@ -321,3 +321,8 @@ main {
     display: none;
   }
 }
+@media (min-width: 900px) {
+  .segmented-control {
+    min-width: 25em;
+  }
+}
