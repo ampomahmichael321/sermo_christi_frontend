@@ -54,9 +54,8 @@ function filterByWord(word) {
 function getParables() {
   if (scripturesContainer.innerHTML !== "") {
     let filteredCopy = filtered.filter((entry) => entry.parable === true); //Make a copy of the filtered varible so that you can go back to the previous filtered
-    segment = "parables";
     renderData(filteredCopy);
-    console.log(segment);
+    segment = "parables";
   }
 }
 
