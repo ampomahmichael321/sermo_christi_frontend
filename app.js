@@ -1,5 +1,5 @@
 const url =
-  "https://raw.githubusercontent.com/ampomahmichael321/jesus_words_data/refs/heads/main/jesus_words.json";
+  "https://raw.githubusercontent.com/ampomahmichael321/jesus_words_data/refs/heads/main/jesus_words_complete.json";
 const response = await fetch(url);
 const data = await response.json();
 let version = "KJV";
@@ -8,6 +8,7 @@ const scripturesContainer = document.getElementById("scriptures-container");
 const bookSelector = document.getElementById("book-select");
 const segmentLabels = document.querySelectorAll('input[name="scope-filter"]');
 const aboutSection = document.querySelector(".about");
+let segment = "comprehensive";
 
 function renderData(scripturesJSON) {
   let scripturesHtml = "";
@@ -34,8 +35,12 @@ function renderData(scripturesJSON) {
 function filterByBook(bookName) {
   if (scripturesContainer.innerHTML !== "") {
     filtered = data.filter((entry) => entry.book === bookName);
-    scripturesContainer.innerHTML = "";
-    renderData(filtered);
+    if (segment === "parables") {
+      getParables();
+    } else {
+      scripturesContainer.innerHTML = "";
+      renderData(filtered);
+    }
   }
 }
 
@@ -49,7 +54,9 @@ function filterByWord(word) {
 function getParables() {
   if (scripturesContainer.innerHTML !== "") {
     let filteredCopy = filtered.filter((entry) => entry.parable === true); //Make a copy of the filtered varible so that you can go back to the previous filtered
+    segment = "parables";
     renderData(filteredCopy);
+    console.log(segment);
   }
 }
 
@@ -73,6 +80,8 @@ segmentLabels.forEach((radio) => {
       getParables();
     } else {
       renderData(filtered);
+      segment = "comprehensive";
+      console.log(segment);
     }
   });
 });
@@ -80,4 +89,16 @@ segmentLabels.forEach((radio) => {
 const searchInput = document.querySelector("#keyword-search");
 searchInput.addEventListener("input", () => {
   filterByWord(searchInput.value);
+});
+const versionSelector = document.getElementById("version-select");
+
+function changeVersion(selectedVersion) {
+  version = selectedVersion;
+  console.log(version);
+  filtered ? renderData(filtered) : renderData(data);
+}
+
+versionSelector.addEventListener("change", (event) => {
+  const selectedVersion = event.target.value;
+  changeVersion(selectedVersion);
 });

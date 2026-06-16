@@ -262,6 +262,7 @@ main {
 }
 .scripture-text {
   font-family: var(--font-scripture);
+  text-align: justify;
 }
 .about {
   width: 100%;
@@ -324,5 +325,11 @@ main {
 @media (min-width: 900px) {
   .segmented-control {
     min-width: 25em;
+  }
+  .scripture-text {
+    font-size: 1.3em;
+  }
+  .scriptures {
+    padding: 2.5em;
   }
 }
