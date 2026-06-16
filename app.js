@@ -1,3 +1,8 @@
+import { inject } from '@vercel/analytics';
+
+// Initialize Vercel Analytics
+inject();
+
 const url =
   "https://raw.githubusercontent.com/ampomahmichael321/jesus_words_data/refs/heads/main/jesus_words_complete.json";
 const response = await fetch(url);
