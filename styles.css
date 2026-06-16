@@ -263,6 +263,7 @@ main {
 .scripture-text {
   font-family: var(--font-scripture);
   text-align: justify;
+  font-size: 1.1em;
 }
 .about {
   width: 100%;
