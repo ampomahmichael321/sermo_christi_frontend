@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. CSS VARIABLE ARCHITECTURE & CUSTOM THEMES
-   ========================================================================== */
+/*1. CSS VARIABLE ARCHITECTURE & CUSTOM THEMES*/
 :root {
   /* Design Tokens - System-wide defaults (Light Mode) */
   --bg-primary: #fcfbfa; /* Soft academic cream/off-white */
@@ -59,9 +57,7 @@
   --accent-interactive: #5c8df6;
 }
 
-/* ==========================================================================
-   2. SYSTEM RESETS & FOUNDATION
-   ========================================================================== */
+/* 2. SYSTEM RESETS & FOUNDATION*/
 *,
 *::before,
 *::after {
@@ -91,9 +87,7 @@ body {
   border: 0;
 }
 
-/* ==========================================================================
-   3. STRUCTURAL COMPONENT DESIGN
-   ========================================================================== */
+/* 3. STRUCTURAL COMPONENT DESIGN */
 
 /* Main Header Layout */
 .app-header {
@@ -153,9 +147,7 @@ body {
   box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.05);
 }
 
-/* ==========================================================================
-   4. CONTROL BAR & INTERACTION STATIONS
-   ========================================================================== */
+/*4. CONTROL BAR & INTERACTION STATIONS*/
 .control-bar {
   background-color: var(--bg-secondary);
   border-bottom: 0.0625rem solid var(--border-color);
@@ -271,6 +263,10 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 1.5em;
+}
+.about p {
+  text-align: justify;
+  font-size: 1.1em;
 }
 .start-button {
   border: none;
