@@ -67,7 +67,12 @@ startButton.addEventListener("click", () => {
 bookSelector.addEventListener("change", (event) => {
   const selectedBook = event.target.value;
   if (selectedBook === "all") {
-    renderData(data);
+    filtered = data;
+    if (segment === "parables") {
+      getParables();
+    } else {
+      renderData(data);
+    }
   } else {
     filterByBook(selectedBook);
   }
